@@ -27,34 +27,10 @@
 ## Event Storming 결과
 * MESEz로 모델링한 이벤트스토밍 결과 : http://www.msaez.io/#/storming/9jZsKaOObZg9sIWkpGQ0AqEx6kv2/mine/43513577ef0b64659209b3c97904ee99/-MK-BBvebd33BLu8-JwH
 
-### 01. 이벤트 도출
-![01 이벤트 도출](https://user-images.githubusercontent.com/34112237/97229725-22fba480-181c-11eb-830e-c88bf57fd70d.PNG)
-
-### 02. 액터 커맨드 추가하기
-![02 액터 커맨드 추가하기](https://user-images.githubusercontent.com/34112237/97229731-2727c200-181c-11eb-8b22-397e72991db2.PNG)
-
-### 03. 어그리게잇으로 묶기
-![03 어그리게잇으로 묶기](https://user-images.githubusercontent.com/34112237/97229738-2a22b280-181c-11eb-822a-0626222aa12e.PNG)
-
-### 04. 바운디드 컨텍스트로 묶기
-![04 pub sub하기전](https://user-images.githubusercontent.com/34112237/97229746-2bec7600-181c-11eb-9639-bb12758c4585.PNG)
-
-### 05-1. 모델 수정 - 주문 취소3개 삭제
-![05 주문취소3개없애야함](https://user-images.githubusercontent.com/34112237/97229755-2e4ed000-181c-11eb-871b-63c4817266ca.PNG)
-
-### 05-2. 모델 수정 - 주문취소접수,알림발송됨 삭제
-![06 주문취소접수,알림발송됨 삭제해야함](https://user-images.githubusercontent.com/34112237/97229765-30b12a00-181c-11eb-95b2-89ba111ee328.PNG)
-
-### 05-3. 모델 수정 - REQ/RES 적용
-![07 주문됨에서 바로 주문접수되면안됨](https://user-images.githubusercontent.com/34112237/97229771-33138400-181c-11eb-87cd-d8187a1b4ab1.PNG)
-
-### 06. 팀과제최종
+### 개인과제최종
 ![08 팀과제최종](https://user-images.githubusercontent.com/34112237/97229777-34dd4780-181c-11eb-9cff-c61059a46bd8.PNG)
 
-### 06. 팀과제최종(영어)
-![09 팀과제최종영어](https://user-images.githubusercontent.com/34112237/97229782-36a70b00-181c-11eb-9417-f3c387f84689.PNG)
-
-### 1차 모형 기능적/비기능적 요구사항을 만족하는지 검증
+### 기능적/비기능적 요구사항을 만족하는지 검증
 1. 기능적 요구사항 
     1. 고객이 메뉴를 주문한다 (OK)
     1. 고객이 결제한다 (OK)
@@ -68,7 +44,7 @@
 1. 비기능적 요구사항
     1. 결제가 되지 않은 주문건은 아예 거래가 성립되지 않아야 한다  Sync 호출  (OK)
     1. 주문/배송 기능이 수행되지 않더라도 주문은 365일 24시간 받을 수 있어야 한다  Async (event-driven), Eventual Consistency (OK)
-    1. 주문과 조회를 분리하여 시스템 성능을 향상시킨다.  (CQRS) (OK)
+    1. 만족도 작성과 조회를 분리하여 시스템 성능을 향상시킨다.  (CQRS) (OK)
 
 ## 헥사고날 아키텍처 다이어그램 도출
 ![image](https://user-images.githubusercontent.com/34112237/97233785-dcf60f00-1822-11eb-9583-abc3d6ae706e.png)
