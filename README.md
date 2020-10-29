@@ -128,10 +128,10 @@ subscribe
 ```
 
 ## Gateway
-// gateway01
-// gateway02
-// gatewat03
-// gateway04
+![gateway01](https://user-images.githubusercontent.com/44703764/97528124-4e36ed00-19f0-11eb-843e-432b3f39fa59.png)
+![gateway02](https://user-images.githubusercontent.com/44703764/97528128-5000b080-19f0-11eb-9f13-8c9f26d95a08.png)
+![gateway03](https://user-images.githubusercontent.com/44703764/97535683-59454980-19ff-11eb-8797-f6da2e01e676.png)
+![gateway04](https://user-images.githubusercontent.com/44703764/97535689-5ba7a380-19ff-11eb-8079-aac4dd8603b6.png)
 
 
 ## 폴리글랏 퍼시스턴스
@@ -143,8 +143,8 @@ subscribe
 # 운영
 
 ## CI/CD 설정
-// CI 화면
-// CD 화면
+![CICD01](https://user-images.githubusercontent.com/44703764/97528113-4a0acf80-19f0-11eb-8adb-e6c53a10b68d.png)
+![CICD02](https://user-images.githubusercontent.com/44703764/97528118-4bd49300-19f0-11eb-9cc2-e6f34b3b2690.png)
 
 ## 동기식 호출 
 간략한 설명 작성
