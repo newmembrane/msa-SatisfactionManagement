@@ -94,10 +94,16 @@ subscribe
 ## 폴리글랏 퍼시스턴스
 데이터 저장소 유형을 복수 채택하여 서비스를 구현함.
 1. H2
+
 ![H2사용](https://user-images.githubusercontent.com/44703764/97537297-ec7f7e80-1a01-11eb-9de6-b15aeb7ca9b8.png)
+
+
 2. MongoDB
+
 ![몽고추가](https://user-images.githubusercontent.com/44703764/97538366-9ad7f380-1a03-11eb-9f62-f3a42f2d967d.png)
+
 ![폴리글랏01](https://user-images.githubusercontent.com/44703764/97535830-97426d80-19ff-11eb-8cb3-04bfdbe683ce.png)
+
 ![mongodb연동확인](https://user-images.githubusercontent.com/44703764/97535857-a1646c00-19ff-11eb-93a6-4ff3c76564c0.png)
 
 # 운영
