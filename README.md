@@ -29,24 +29,8 @@
 
 ### 개인과제최종
 ![개인 이벤트 도출](https://user-images.githubusercontent.com/44703764/97536753-fc4a9300-1a00-11eb-8bbb-6bd9ae436795.png)
-
-
-### 기능적/비기능적 요구사항을 만족하는지 검증
-1. 기능적 요구사항 
-    1. 고객이 메뉴를 주문한다 (OK)
-    1. 고객이 결제한다 (OK)
-    1. 주문이 되면 주문/배송 시스템에 전달된다. (OK)
-    1. 판매자가 확인하여 제작을 시작한다. (OK)
-    1. 배송자가 확인하여 배송을 시작한다. (OK)
-    1. 배송자가 배송 완료 후 완료를 입력한다. (OK)
-    1. 주문이 취소되면 결제가 취소된다 (OK)
-    1. 주문 상태가 변경될 때마다 일림 관리자에 기록한다. (OK)
-
-1. 비기능적 요구사항
-    1. 결제가 되지 않은 주문건은 아예 거래가 성립되지 않아야 한다  Sync 호출  (OK)
-    1. 주문/배송 기능이 수행되지 않더라도 주문은 365일 24시간 받을 수 있어야 한다  Async (event-driven), Eventual Consistency (OK)
-    1. 만족도 작성과 조회를 분리하여 시스템 성능을 향상시킨다.  (CQRS) (OK)
-
+* satisfactionView 구현
+* 조회 목적 이력 관리를 위하여 비동기(pub/sub) 방식으로 주요 Event 별도 로그 저장
 
 ## 헥사고날 아키텍처 다이어그램 도출
 ![image](https://user-images.githubusercontent.com/34112237/97233785-dcf60f00-1822-11eb-9583-abc3d6ae706e.png)
@@ -120,6 +104,8 @@ subscribe
     }
 ```
 
+
+
 ## Gateway
 ![gateway01](https://user-images.githubusercontent.com/44703764/97528124-4e36ed00-19f0-11eb-843e-432b3f39fa59.png)
 ![gateway02](https://user-images.githubusercontent.com/44703764/97528128-5000b080-19f0-11eb-9f13-8c9f26d95a08.png)
@@ -129,10 +115,12 @@ subscribe
 
 ## 폴리글랏 퍼시스턴스
 데이터 저장소 유형을 복수 채택하여 서비스를 구현함.
-
+1. H2
+![H2사용](https://user-images.githubusercontent.com/44703764/97537297-ec7f7e80-1a01-11eb-9de6-b15aeb7ca9b8.png)
+2. MongoDB
+![몽고추가](https://user-images.githubusercontent.com/44703764/97538366-9ad7f380-1a03-11eb-9f62-f3a42f2d967d.png)
 ![폴리글랏01](https://user-images.githubusercontent.com/44703764/97535830-97426d80-19ff-11eb-8cb3-04bfdbe683ce.png)
 ![mongodb연동확인](https://user-images.githubusercontent.com/44703764/97535857-a1646c00-19ff-11eb-93a6-4ff3c76564c0.png)
-데이터 확인하기
 
 # 운영
 
@@ -251,97 +239,6 @@ kubectl get configmaps pizzaconfigmap -o yaml
 
 
 
-
-
-
-
-
-# 평가항목
-## Saga
-orderCanceled에서 paymentCancel로 pub 후 PaymentHistory 변경
-
-## CQRS
-![image](https://user-images.githubusercontent.com/34112237/97382926-c1b4fd80-190f-11eb-9ccd-1d12a7729e1d.png)
-- view 스티커 구현 (삭제)
-- 핵심 Biz로직은 동기식 처리 (Req/Res) 및 비동기식 처리(pub/sub)
-- 조회 목적 이력 관리를 위하여 비동기(pub/sub) 방식으로 주요 Event 별도 로그 저장
-(그림. 모델에서 각 event 표시, 저장 로직 표시)
-
-## Correlation
-- Correlation key saga cqrs 자동 득점
-
-## Req/Resp
-- 
-
-## Gateway
-
-## Deploy/Pipeline
-PizzaOrderManagement GITHUB에 신규 파일 추가
-![image](https://user-images.githubusercontent.com/34112237/97384017-2ec99280-1912-11eb-8f36-26b3c444b234.png)
-
-CI/CD 파이프라인 자동 적용
-![image](https://user-images.githubusercontent.com/34112237/97383819-d1354600-1911-11eb-9c0a-912216b45410.png)
-![image](https://user-images.githubusercontent.com/34112237/97384616-61c05600-1913-11eb-89ba-813220216e9e.png)
-
-```
-skcc02@Azure:~$ kubectl get all
-NAME                                           READY   STATUS    RESTARTS   AGE
-pod/gateway-6f676b79b9-zpfrn                   1/1     Running   0          36m
-pod/httpie                                     1/1     Running   1          17h
-pod/notificationmanagement-6776554c78-ltj4d    1/1     Running   0          23m
-pod/orderdeliverymanagement-7546b6f744-vvh9n   1/1     Running   0          15h
-pod/paymentmanagement-8656994556-6qw66         1/1     Running   0          101s
-pod/pizzaordermanagement-667cb666bd-d5fln      1/1     Running   0          24m
-
-NAME                              TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)          AGE
-service/gateway                   LoadBalancer   10.0.94.200    52.149.189.108   8080:30155/TCP   36m
-service/kubernetes                ClusterIP      10.0.0.1       <none>           443/TCP          16h
-service/notificationmanagement    ClusterIP      10.0.131.123   <none>           8080/TCP         125m
-service/orderdeliverymanagement   ClusterIP      10.0.208.63    <none>           8080/TCP         16h
-service/paymentmanagement         ClusterIP      10.0.57.39     <none>           8080/TCP         3m59s
-service/pizzaordermanagement      ClusterIP      10.0.244.64    <none>           8080/TCP         3h34m
-
-NAME                                      READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/gateway                   1/1     1            1           36m
-deployment.apps/notificationmanagement    1/1     1            1           125m
-deployment.apps/orderdeliverymanagement   1/1     1            1           16h
-deployment.apps/paymentmanagement         1/1     1            1           4m2s
-deployment.apps/pizzaordermanagement      1/1     1            1           3h34m
-
-NAME                                                 DESIRED   CURRENT   READY   AGE
-replicaset.apps/gateway-6f676b79b9                   1         1         1       36m
-replicaset.apps/notificationmanagement-6776554c78    1         1         1       24m
-replicaset.apps/notificationmanagement-67f8757474    0         0         0       125m
-replicaset.apps/notificationmanagement-6b7b6d796b    0         0         0       124m
-replicaset.apps/orderdeliverymanagement-54fcf466cf   0         0         0       16h
-replicaset.apps/orderdeliverymanagement-5cf5dc657c   0         0         0       16h
-replicaset.apps/orderdeliverymanagement-65b5f4fcfb   0         0         0       16h
-replicaset.apps/orderdeliverymanagement-7546b6f744   1         1         1       15h
-replicaset.apps/orderdeliverymanagement-7ff58767b9   0         0         0       16h
-replicaset.apps/orderdeliverymanagement-cf84dcfc     0         0         0       16h
-replicaset.apps/paymentmanagement-559b8dc87b         0         0         0       3m59s
-replicaset.apps/paymentmanagement-5969d57847         0         0         0       4m2s
-replicaset.apps/paymentmanagement-8656994556         1         1         1       102s
-replicaset.apps/pizzaordermanagement-57c4d9cc7b      0         0         0       70m
-replicaset.apps/pizzaordermanagement-667cb666bd      1         1         1       24m
-replicaset.apps/pizzaordermanagement-66d968895c      0         0         0       66m
-replicaset.apps/pizzaordermanagement-7779c544df      0         0         0       3h34m
-replicaset.apps/pizzaordermanagement-7d54c94bb6      0         0         0       62m
-replicaset.apps/pizzaordermanagement-85c5f67d85      0         0         0       3h34m
-```
-
-
-## Circuit Breaker 
-
-
-
-
-## Polyglot
-   - 랭기지 레벨 또는 데이터베이스 레벨
-
-
-   
-   
 # 자주 사용하는 명령어
    
 ## kafka 사용법
