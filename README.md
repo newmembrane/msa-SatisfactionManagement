@@ -1,29 +1,7 @@
 ![image](https://user-images.githubusercontent.com/34112237/97147961-ae8a1c80-17ad-11eb-80da-93f2f07108d4.png)
 # pizza 
 
-# 서비스 시나리오
-
-## 기능적 요구사항
-1. 고객이 메뉴를 주문한다
-1. 고객이 결제한다
-1. 주문이 되면 주문/배송 시스템에 전달된다.
-1. 판매자가 확인하여 제작을 시작한다.
-1. 배송자가 확인하여 배송을 시작한다.
-1. 배송자가 배송 완료 후 완료를 입력한다.
-1. 주문이 취소되면 결제가 취소된다
-1. 주문 상태가 변경될 때마다 일림 관리자에 기록한다.
-
-## 비기능적 요구사항
-1. 트랜잭션
-    1. 결제가 되지 않은 주문건은 아예 거래가 성립되지 않아야 한다  Sync 호출 
-1. 장애격리
-    1. 주문/배송 기능이 수행되지 않더라도 주문은 365일 24시간 받을 수 있어야 한다  Async (event-driven), Eventual Consistency
-1. 성능
-    1. 주문과 조회를 분리하여 시스템 성능을 향상시킨다.  (CQRS)
-
-
 # 분석 설계
-
 ## Event Storming 결과
 * MESEz로 모델링한 이벤트스토밍 결과 : http://www.msaez.io/#/storming/9jZsKaOObZg9sIWkpGQ0AqEx6kv2/mine/43513577ef0b64659209b3c97904ee99/-MK-BBvebd33BLu8-JwH
 
