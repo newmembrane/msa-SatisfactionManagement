@@ -6,7 +6,8 @@
 * MESEz로 모델링한 이벤트스토밍 결과 : http://www.msaez.io/#/storming/9jZsKaOObZg9sIWkpGQ0AqEx6kv2/mine/43513577ef0b64659209b3c97904ee99/-MK-BBvebd33BLu8-JwH
 
 ### 개인과제최종
-![개인 이벤트 도출](https://user-images.githubusercontent.com/44703764/97536753-fc4a9300-1a00-11eb-8bbb-6bd9ae436795.png)
+![개인최종](https://user-images.githubusercontent.com/44703764/97544582-2d30c500-1a0d-11eb-8056-4c3787c7148b.png)
+
 * satisfactionView 구현
 * 조회 목적 이력 관리를 위하여 비동기(pub/sub) 방식으로 주요 Event 별도 로그 저장
 
