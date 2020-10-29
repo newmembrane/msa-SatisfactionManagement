@@ -28,6 +28,7 @@
 * MESEz로 모델링한 이벤트스토밍 결과 : http://www.msaez.io/#/storming/9jZsKaOObZg9sIWkpGQ0AqEx6kv2/mine/43513577ef0b64659209b3c97904ee99/-MK-BBvebd33BLu8-JwH
 
 ### 개인과제최종
+![개인 이벤트 도출](https://user-images.githubusercontent.com/44703764/97536753-fc4a9300-1a00-11eb-8bbb-6bd9ae436795.png)
 
 
 ### 기능적/비기능적 요구사항을 만족하는지 검증
@@ -155,7 +156,7 @@ kubectl autoscale deployment orderdeliverymanagement --cpu-percent=20 --min=1 --
 ```
 watch -n 3 kubectl get all
 ```
-![auto scale  늘어나기 전 pods list](https://user-images.githubusercontent.com/44703764/97434966-22215a80-1963-11eb-8bfe-a32d7f9cfcf4.png)
+![auto scale  01](https://user-images.githubusercontent.com/44703764/97536759-010f4700-1a01-11eb-9279-5f5c79039f13.png)
 
 - 무한 워크로드를 걸어준 뒤 cpu 사용량을 모니터링
 ```
@@ -164,15 +165,12 @@ while true;do curl 52.149.189.108:8080/orderDeliveries;done
 ```
 watch -n 1 kubectl get hpa
 ```
-![auto scale  fullload - replica 10으로 늘어남](https://user-images.githubusercontent.com/44703764/97434956-1df53d00-1963-11eb-9e39-2cf8aa5f49e3.png)
 
 - cpu 사용량이 20%를 넘어가면서 스케일 아웃이 벌어지는 것을 확인할 수 있다:
-![auto scale  load target 초괴하여 replica 늘어남](https://user-images.githubusercontent.com/44703764/97434963-1f266a00-1963-11eb-9081-8fb8bcd7ae48.png)
-
-- ![auto scale  fullload - replica 10으로 늘어난 pods list](https://user-images.githubusercontent.com/44703764/97434995-2d748600-1963-11eb-81ac-8afeef211f08.png)
+![auto scale  02](https://user-images.githubusercontent.com/44703764/97536772-040a3780-1a01-11eb-8f4f-d29ffe554b33.png)
 
 - 무한 로드 중단 후 cpu 사용량이 안정되면 replica가 줄어드는 것을 확인할 수 있다:
-![auto scale  부하정상화된 후 1로 줄어듦](https://user-images.githubusercontent.com/44703764/97434949-1c2b7980-1963-11eb-9e2a-56509717cf6a.png)
+![auto scale  03](https://user-images.githubusercontent.com/44703764/97536777-066c9180-1a01-11eb-96fa-242777e02787.png)
 
 ###### deployment.yaml 설정
 ```
