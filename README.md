@@ -28,7 +28,7 @@
 * MESEz로 모델링한 이벤트스토밍 결과 : http://www.msaez.io/#/storming/9jZsKaOObZg9sIWkpGQ0AqEx6kv2/mine/43513577ef0b64659209b3c97904ee99/-MK-BBvebd33BLu8-JwH
 
 ### 개인과제최종
-//개인과제최종
+
 
 ### 기능적/비기능적 요구사항을 만족하는지 검증
 1. 기능적 요구사항 
@@ -49,22 +49,14 @@
 
 ## 헥사고날 아키텍처 다이어그램 도출
 ![image](https://user-images.githubusercontent.com/34112237/97233785-dcf60f00-1822-11eb-9583-abc3d6ae706e.png)
-//개인과정 부가 이미지
+![헥사고날](https://user-images.githubusercontent.com/44703764/97535821-94477d00-19ff-11eb-9efc-23b668385a05.png)
 
 # 구현
 ## 실행 결과
-![CancelLog(External request)](https://user-images.githubusercontent.com/34112237/97390068-4b1ffc00-191f-11eb-98c2-563bed04de5f.png)
-![CancelMessage](https://user-images.githubusercontent.com/34112237/97390071-4d825600-191f-11eb-88e3-3f777e4ed091.png)
-![CancelSTEP01-POST](https://user-images.githubusercontent.com/34112237/97390075-4fe4b000-191f-11eb-92fb-300535fc0f18.png)
-![CancelSTEP02-PATCH](https://user-images.githubusercontent.com/34112237/97390078-51ae7380-191f-11eb-8543-8b3fa9aefb1b.png)
-![CoreMessage](https://user-images.githubusercontent.com/34112237/97390086-5541fa80-191f-11eb-89db-e092a9e962ec.png)
-![CoreSTEP01-POST](https://user-images.githubusercontent.com/34112237/97390090-58d58180-191f-11eb-910a-6c80dae95fa7.png)
-![CoreSTEP02-PATCH](https://user-images.githubusercontent.com/34112237/97390093-5b37db80-191f-11eb-9ca8-2f49d30cfc8f.png)
-![CoreSTEP03-PATCH](https://user-images.githubusercontent.com/34112237/97390100-5e32cc00-191f-11eb-9f8e-2c28650b65cc.png)
-![CoreSTEP04-PATCH](https://user-images.githubusercontent.com/34112237/97390106-60952600-191f-11eb-88db-5494b8a5c584.png)
-
-
-
+![배달완료 후 satisfactions_1 생성됨](https://user-images.githubusercontent.com/44703764/97535880-acb79780-19ff-11eb-86f8-ac22cbbeceae.png)
+![satisfactionWritten으로부터 받은 request 처리 로그](https://user-images.githubusercontent.com/44703764/97535889-b0e3b500-19ff-11eb-99e2-21d77d482861.png)
+![satisfactionWritten으로부터 받은 request 처리됐는지 조회](https://user-images.githubusercontent.com/44703764/97535894-b2ad7880-19ff-11eb-84d2-64031cf5d49e.png)
+![전체 kafka 메시지](https://user-images.githubusercontent.com/44703764/97535903-b3dea580-19ff-11eb-8559-f53ad17eb017.png)
 
 
 ## 동기식 호출과 Fallback 처리
@@ -136,8 +128,9 @@ subscribe
 
 ## 폴리글랏 퍼시스턴스
 데이터 저장소 유형을 복수 채택하여 서비스를 구현함.
-// 몽고 dependancy 파일
-// 몽고 application 파일 중 하나
+
+![폴리글랏01](https://user-images.githubusercontent.com/44703764/97535830-97426d80-19ff-11eb-8cb3-04bfdbe683ce.png)
+![mongodb연동확인](https://user-images.githubusercontent.com/44703764/97535857-a1646c00-19ff-11eb-93a6-4ff3c76564c0.png)
 데이터 확인하기
 
 # 운영
